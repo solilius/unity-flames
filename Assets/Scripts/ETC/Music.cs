@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Music : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private static Music insatance;
 
-    // Update is called once per frame
-    void Update()
+    void Awake()
     {
-        
+        if (!insatance) {
+            insatance = this;
+            DontDestroyOnLoad(insatance);
+        } else {
+            Destroy(gameObject);
+        }
     }
 }

@@ -12,4 +12,8 @@ public class Cursor : MonoBehaviour {
     {
         transform.position = Input.mousePosition;
     }
+
+    void OnDestroy() {
+        UnityEngine.Cursor.visible = true;
+    }
 }

@@ -13,6 +13,8 @@ public class Boss : MonoBehaviour
 
     private int halfHealth;
     private Animator anim;
+    private SceneTransitions sceneTransitions;
+
     void Start()
     {
         halfHealth = health / 2;
@@ -20,6 +22,7 @@ public class Boss : MonoBehaviour
         healthBar = FindAnyObjectByType<Slider>();
         healthBar.maxValue = health;
         healthBar.value = health;
+        sceneTransitions = FindAnyObjectByType<SceneTransitions>();
     }
 
     public void TakeDamage(int damageAmount) {
@@ -30,6 +33,7 @@ public class Boss : MonoBehaviour
         
         if (health <= 0) {
             KillBoss();
+            sceneTransitions.LoadScene("Win");
         }
 
         if (health <= halfHealth) {
